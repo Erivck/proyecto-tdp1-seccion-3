@@ -12,7 +12,10 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-Wextra" />
+					<Add option="-Wall" />
 					<Add option="-g" />
+					<Add directory="C:/Users/erivc/Documentos/GitHub/proyecto-tdp1-seccion-3/Proyecto/utils" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +25,8 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-Wextra" />
+					<Add option="-Wall" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -31,9 +36,29 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="banco.h" />
+		<Unit filename="cliente.h" />
+		<Unit filename="datos.h" />
+		<Unit filename="ingresar.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/banco.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/cliente.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/datos.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/ingresar.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/utils.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="utils.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
