@@ -1,6 +1,15 @@
 #ifndef UTILS_H_INCLUDED
 #define UTILS_H_INCLUDED
 
+
+#ifdef _WIN32
+#include <windows.h>
+#define configurarConsola() SetConsoleCP(1252); SetConsoleOutputCP(1252)
+#else
+#define configurarConsola()
+#endif // _WIN32
+
+
 // Limpia la pantalla.
 void limpiarPantalla (void);
 

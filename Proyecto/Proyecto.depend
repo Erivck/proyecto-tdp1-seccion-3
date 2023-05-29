@@ -1,10 +1,9 @@
 # depslib dependency file v1.0
-1684621352 source:c:\users\erivc\documentos\github\proyecto-tdp1-seccion-3\proyecto\main.c
+1685396653 source:c:\users\erivc\documentos\github\proyecto-tdp1-seccion-3\proyecto\main.c
 	<stdio.h>
 	<stdlib.h>
 	"utils.h"
-	"ingresar.h"
-	<windows.h>
+	"banco.h"
 
 1684110135 c:\users\erivc\documentos\github\proyecto-tdp1-seccion-3\proyecto\utils\utils.h
 
@@ -13,7 +12,8 @@
 	<stdlib.h>
 	"utils.h"
 
-1684345574 c:\users\erivc\documentos\github\proyecto-tdp1-seccion-3\proyecto\utils.h
+1685392490 c:\users\erivc\documentos\github\proyecto-tdp1-seccion-3\proyecto\utils.h
+	<windows.h>
 
 1684266104 source:c:\users\erivc\documentos\github\proyecto-tdp1-seccion-3\proyecto\ingresar.c
 	<stdio.h>
@@ -22,24 +22,29 @@
 	"ingresar.h"
 	"utils.h"
 
-1684619150 c:\users\erivc\documentos\github\proyecto-tdp1-seccion-3\proyecto\cliente.h
+1685330800 c:\users\erivc\documentos\github\proyecto-tdp1-seccion-3\proyecto\cliente.h
 	<stdbool.h>
+	<time.h>
+	"datos.h"
 
-1684253622 c:\users\erivc\documentos\github\proyecto-tdp1-seccion-3\proyecto\ingresar.h
+1684772329 c:\users\erivc\documentos\github\proyecto-tdp1-seccion-3\proyecto\ingresar.h
 
-1684620718 source:c:\users\erivc\documentos\github\proyecto-tdp1-seccion-3\proyecto\src\cliente.c
+1685316156 source:c:\users\erivc\documentos\github\proyecto-tdp1-seccion-3\proyecto\src\cliente.c
 	<stdio.h>
 	<string.h>
 	<stdlib.h>
 	<stdbool.h>
 	"../cliente.h"
+	"../datos.h"
 
-1684345543 source:c:\users\erivc\documentos\github\proyecto-tdp1-seccion-3\proyecto\src\utils.c
+1685139372 source:c:\users\erivc\documentos\github\proyecto-tdp1-seccion-3\proyecto\src\utils.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
+	<ctype.h>
 	"../utils.h"
 
-1684621191 source:c:\users\erivc\documentos\github\proyecto-tdp1-seccion-3\proyecto\src\ingresar.c
+1685133830 source:c:\users\erivc\documentos\github\proyecto-tdp1-seccion-3\proyecto\src\ingresar.c
 	<stdio.h>
 	<string.h>
 	<stdlib.h>
@@ -49,22 +54,41 @@
 	"../datos.h"
 	"../banco.h"
 
-1684619263 c:\users\erivc\documentos\github\proyecto-tdp1-seccion-3\proyecto\datos.h
+1685358739 c:\users\erivc\documentos\github\proyecto-tdp1-seccion-3\proyecto\datos.h
 	<stdbool.h>
 
-1684620187 source:c:\users\erivc\documentos\github\proyecto-tdp1-seccion-3\proyecto\src\datos.c
+1685393416 source:c:\users\erivc\documentos\github\proyecto-tdp1-seccion-3\proyecto\src\datos.c
 	<stdio.h>
 	<stdbool.h>
 	<string.h>
+	<stdlib.h>
+	<time.h>
 	"../datos.h"
 	"../utils.h"
 
-1684382175 c:\users\erivc\documentos\github\proyecto-tdp1-seccion-3\proyecto\banco.h
+1685397356 c:\users\erivc\documentos\github\proyecto-tdp1-seccion-3\proyecto\banco.h
 	"cliente.h"
+	"cuenta.h"
 
-1684621427 source:c:\users\erivc\documentos\github\proyecto-tdp1-seccion-3\proyecto\src\banco.c
+1685396559 source:c:\users\erivc\documentos\github\proyecto-tdp1-seccion-3\proyecto\src\banco.c
 	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<time.h>
 	"../banco.h"
 	"../cliente.h"
 	"../utils.h"
+	"../datos.h"
+	"../cuenta.h"
+
+1685387742 c:\users\erivc\documentos\github\proyecto-tdp1-seccion-3\proyecto\cuenta.h
+	<stdbool.h>
+	<time.h>
+	"cliente.h"
+
+1685387728 source:c:\users\erivc\documentos\github\proyecto-tdp1-seccion-3\proyecto\src\cuenta.c
+	"../cuenta.h"
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
 

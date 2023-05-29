@@ -38,8 +38,8 @@
 		</Compiler>
 		<Unit filename="banco.h" />
 		<Unit filename="cliente.h" />
+		<Unit filename="cuenta.h" />
 		<Unit filename="datos.h" />
-		<Unit filename="ingresar.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -49,10 +49,10 @@
 		<Unit filename="src/cliente.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/datos.c">
+		<Unit filename="src/cuenta.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/ingresar.c">
+		<Unit filename="src/datos.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/utils.c">
