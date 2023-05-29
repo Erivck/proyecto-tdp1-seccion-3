@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
 #include "../utils.h"
 
 void limpiarPantalla () {
@@ -12,6 +14,6 @@ void limpiarBuffer () {
 
 void esperarEntrada() {
   printf("Presione \"Enter\" para continuar...");
-  getchar();
   limpiarBuffer();
 }
+

@@ -2,102 +2,228 @@
 #include <stdbool.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 #include "../datos.h"
 #include "../utils.h"
 
-char* Nombre_de_Datos[] = {
+const char* Nombre_de_Datos[] = {
   "Usuario",
   "Clave",
-  "Nombre",
-  "Apellido",
-  "N˙mero de Cedula",
+  "Nombres",
+  "Apellidos",
+  "N˙mero de CÈdula",
+  "Sexo",
+  "Fecha de Nacimiento",
+  "N˙mero de TelÈfono",
+  "Estado",
+  "Ciudad",
+  "Municipio",
+  "DirecciÛn",
+  "CÛdigo Postal",
+  "N˙mero de Cuenta",
+  "CÈdula del Cliente",
+  "TelÈfono de Pago MÛvil",
+  "Tipo de Cuenta"
 };
+
+const char* Nombre_de_Datos_Minusculas[] = {
+  "usuario",
+  "clave",
+  "nombre",
+  "apellido",
+  "n˙mero de cÈdula",
+  "sexo",
+  "fecha de nacimiento",
+  "n˙mero de telÈfono",
+  "estado",
+  "ciudad",
+  "municipio",
+  "direcciÛn",
+  "cÛdigo postal",
+  "n˙mero de cuenta"
+};
+
+const char* formatos[] = {
+    "1234567890",
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ·ÈÌÛ˙¡…Õ”⁄Ò— ",
+    "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ·ÈÌÛ˙¡…Õ”⁄Ò— ",
+    "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ·ÈÌÛ˙¡…Õ”⁄Ò— .,;:-",
+    "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ·ÈÌÛ˙¡…Õ”⁄Ò—_",
+    "1234567890/"
+};
+
+const time_t edadMinima = 365 * 24 * 60 * 60 * 18;
+
+const char* ejemploDeFormato(Tipo_de_Dato dato) {
+  switch (dato){
+  case FECHA_DE_NACIMIENTO:
+    return " (dd/mm/aaaa)";
+  case SEXO:
+    return " (M o F)";
+  default:
+    return NULL;
+  }
+}
 
 int datoMaxChars[] = {
-  15, // Usuario
-  20, // Clave
-  15, // Nombre
-  15, // Apellido
-  8, // Cedula
+  USUARIO_MAX, // Usuario
+  CLAVE_MAX, // Clave
+  NOMBRES_MAX, // Nombre
+  APELLIDOS_MAX, // Apellido
+  CEDULA_MAX, // CÈdula
+  SEXO_MAX, // Sexo
+  FECHA_DE_NACIMIENTO_MAX, // Fecha de Nacimiento
+  TELEFONO_MAX, // TelÈfono
+  ESTADO_MAX, // Estado
+  CIUDAD_MAX, // Ciudad
+  MUNICIPIO_MAX, // Municipio
+  DIRECCION_MAX, // Direccion
+  CODIGO_POSTAL_MAX, // CÛdigo Postal
+  NUMERO_DE_CUENTA_MAX // Numero de Cuenta
 };
 
-char* formatos[] = {
-    "1234567890",
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ·ÈÌÛ˙¡…Õ”⁄Ò—",
-    "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ·ÈÌÛ˙¡…Õ”⁄Ò—",
-    ".,;:-",
-};
 
 
-char* obtenerFormato(Tipo_de_Formato formato) {
-  switch(formato) {
-    case numerico:
-    case alfabetico:
-    case signosDePuntuacion:
-      return formatos[formato];
-    case alfanumerico:
-      return strcat(formatos[numerico], formatos[alfabetico]);
+int datoMinChars(Tipo_de_Dato tipo) {
+  switch (tipo) {
+    case CODIGO_POSTAL:
+      return 4;
+    case TELEFONO:
+      return 10;
+    case FECHA_DE_NACIMIENTO:
+      return 10;
+    case NUMERO_DE_CUENTA:
+      return 10;
     default:
-      return NULL;
+      return 1;
   }
 }
 
-char* obtenerFormatoDeDato(Tipo_de_Dato tipo) {
+bool datoTerminaConA(Tipo_de_Dato dato) {
+  switch(dato) {
+    case CLAVE:
+    case CIUDAD:
+    case DIRECCION:
+    case FECHA_DE_NACIMIENTO:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const char* obtenerFormatoDeDato(Tipo_de_Dato tipo) {
   switch(tipo) {
-    case Usuario: {
-      int longitud = strlen(formatos[alfanumerico]) + 2;
-      char* formatoUsuario = (char*) calloc(longitud, sizeof(char));
-      sprintf(formatoUsuario, "%s_", formatos[alfanumerico]);
-      return formatoUsuario;
-    }
-    case Nombre:
-    case Apellido:
+    case USUARIO:
+      return formatos[formatoDeUsuario];
+    case NOMBRES:
+    case APELLIDOS:
+    case ESTADO:
+    case CIUDAD:
+    case MUNICIPIO:
       return formatos[alfabetico];
-    case Cedula:
+    case DIRECCION:
+      return formatos[texto];
+    case CEDULA:
+    case TELEFONO:
+    case CODIGO_POSTAL:
+    case NUMERO_DE_CUENTA:
       return formatos[numerico];
-    case Clave:
+    case SEXO:
+      return "FM";
+    case FECHA_DE_NACIMIENTO:
+      return formatos[fecha];
+    case CLAVE:
     default:
       return NULL;
   }
 }
 
-bool validarDato(Tipo_de_Dato tipo, char* buffer) {
-  char* formato = obtenerFormatoDeDato(tipo);
+int validarFecha(char* buffer) {
+  time_t fechaNacimiento, fechaActual;
+  int d, m, a, args;
+
+  args = sscanf(buffer, "%2d/%2d/%4d", &d, &m, &a);
+  if (args != 3) return ERROR_FORMATO_INVALIDO;
+
+  struct tm estructuraFecha = {.tm_mday = d, .tm_mon = m, .tm_year = a-1900};
+  fechaNacimiento = mktime(&estructuraFecha);
+
+  if (fechaNacimiento < 0) return ERROR_FECHA_INVALIDA;
+
+  fechaActual = time(NULL);
+
+  if  (fechaActual - fechaNacimiento < edadMinima) return ERROR_CLIENTE_MENOR_EDAD;
+
+  return 0;
+}
+
+void aplicarFormatoCedula(char* buffer) {
+  int numCedula = (int) strtol(buffer, NULL, 10);
+  sprintf(buffer, "%08d", numCedula);
+}
+
+int validarDato(Tipo_de_Dato tipo, char* buffer) {
+  int numCaracteres = strlen(buffer);
+
+  if (numCaracteres > datoMaxChars[tipo]) {
+    return ERROR_MAXIMO_DE_CARACTERES;
+  }
+
+  if (numCaracteres < datoMinChars(tipo)) {
+    return ERROR_MINIMO_DE_CARACTERES;
+  }
+
+  const char* formato = obtenerFormatoDeDato(tipo);
   if (formato == NULL) return false;
   for (int i = 0; buffer[i] != 0; i++) {
-    if (strchr(formato, buffer[i]) == NULL) return true;
+    if (strchr(formato, buffer[i]) == NULL) return ERROR_FORMATO_INVALIDO;
   }
-  if (tipo == Usuario) free(formato);
-  return false;
+
+  if (tipo == CEDULA) aplicarFormatoCedula(buffer);
+  if (tipo == FECHA_DE_NACIMIENTO) return validarFecha(buffer);
+
+  return 0;
 }
 
 
-bool leerDato(Tipo_de_Dato dato, char* puntero) {
-  bool error;
+void leerDato(Tipo_de_Dato tipo, char* puntero) {
+  int error;
 
-  char bufferDeEntrada[27] = {0};
+  char bufferDeEntrada[41] = {0};
+  const char* ejemplo = ejemploDeFormato(tipo);
 
-  printf("%s: ", Nombre_de_Datos[dato]);
-  scanf(" %26[^\n]", bufferDeEntrada);
+  do {
+    error = 0;
+
+    printf("%s%s: ", Nombre_de_Datos[tipo], ejemplo ? ejemplo : "");
+    scanf(" %40[^\n]", bufferDeEntrada);
+    limpiarBuffer();
+
+    error = validarDato(tipo, bufferDeEntrada);
+
+    switch(error) {
+      case ERROR_MAXIMO_DE_CARACTERES:
+        printf("\e[91mel m·ximo de caracteres es %d.\e[0m\n\n", datoMaxChars[tipo]);
+        break;
+      case ERROR_MINIMO_DE_CARACTERES:
+        printf("\e[91mel minimo de caracteres es %d.\e[0m\n\n", datoMinChars(tipo));
+        break;
+      case ERROR_FORMATO_INVALIDO:
+        printf("\e[91m%s inv·lid%c.\e[0m\n\n", Nombre_de_Datos_Minusculas[tipo], datoTerminaConA(tipo) ? 'a': 'o');
+        break;
+      case ERROR_FECHA_INVALIDA:
+        printf("\e[91m%s inv·lida.\e[0m\n\n", Nombre_de_Datos_Minusculas[FECHA_DE_NACIMIENTO]);
+        break;
+      case ERROR_CLIENTE_MENOR_EDAD:
+        printf("\e[91mtienes que tener 18 aÒos o m·s.\e[0m\n\n");
+        break;
+    }
+  } while(error);
+
   printf("\n");
-
-  int numCaracteres = strlen(bufferDeEntrada);
-
-  if (numCaracteres > datoMaxChars[dato]) {
-    printf("El m·ximo de caracteres es %d.\n\n", datoMaxChars[dato]);
-    esperarEntrada();
-    return true;
-  }
-
-  error = validarDato(dato, bufferDeEntrada);
-
-  if (error) {
-    printf("%s inv·lid%c.\n\n", Nombre_de_Datos[dato], dato == Clave? 'a': 'o');
-    esperarEntrada();
-    return true;
-  }
 
   strcpy(puntero, bufferDeEntrada);
 
-  return false;
+  return;
 }
+
