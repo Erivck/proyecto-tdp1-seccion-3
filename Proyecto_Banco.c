@@ -90,7 +90,7 @@ typedef enum {
   fecha,
 } Tipo_de_Formato;
 
-//EnumeraciÔøΩn de los tipos de datos del proyecto.
+//EnumeraciÛn de los tipos de datos del proyecto.
 typedef enum {
   USUARIO,
   CLAVE,
@@ -108,7 +108,7 @@ typedef enum {
   NUMERO_DE_CUENTA
 } Tipo_de_Dato;
 
-// EnumeraciÔøΩn de Errores posibles de validaciÔøΩn.
+// EnumeraciÛn de Errores posibles de validaciÛn.
 enum Errores_de_Validacion {
   ERROR_MAXIMO_DE_CARACTERES = 1,
   ERROR_MINIMO_DE_CARACTERES,
@@ -268,8 +268,8 @@ const char* Nombre_de_Datos_Minusculas[] = {
 
 const char* formatos[] = {
     "1234567890",
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
-    "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ·ÈÌÛ˙¡…Õ”⁄Ò— ë ",
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ·ÈÌÛ˙¡…Õ”⁄Ò— ",
+    "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ·ÈÌÛ˙¡…Õ”⁄Ò— ",
     "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ·ÈÌÛ˙¡…Õ”⁄Ò— .,;:-",
     "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ·ÈÌÛ˙¡…Õ”⁄Ò—_",
     "1234567890/"
@@ -282,15 +282,15 @@ int datoMaxChars[] = {
   CLAVE_MAX, // Clave
   NOMBRES_MAX, // Nombre
   APELLIDOS_MAX, // Apellido
-  CEDULA_MAX, // CÔøΩdula
+  CEDULA_MAX, // CÛdula
   SEXO_MAX, // Sexo
   FECHA_DE_NACIMIENTO_MAX, // Fecha de Nacimiento
-  TELEFONO_MAX, // TelÔøΩfono
+  TELEFONO_MAX, // TelÛfono
   ESTADO_MAX, // Estado
   CIUDAD_MAX, // Ciudad
   MUNICIPIO_MAX, // Municipio
   DIRECCION_MAX, // Direccion
-  CODIGO_POSTAL_MAX, // CÔøΩdigo Postal
+  CODIGO_POSTAL_MAX, // CÛdigo Postal
   NUMERO_DE_CUENTA_MAX // Numero de Cuenta
 };
 
