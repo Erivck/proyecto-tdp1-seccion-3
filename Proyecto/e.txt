@@ -1,0 +1,154 @@
+limpiarPantalla:
+Limpia la pantalla con un comando del sistema.
+
+void limpiarBuffer(): Limpia el buffer de entrada, solo usar despues de scanf o getchar.
+
+void esperarEntrada(): Espera a que el usuario presione la tecla "Enter".
+
+configurarConsola(): Macro de preprocesador que configura la entrada y salida de la consola con las funciones de la libreria windows.h
+
+Nombre_de_Datos: Array que contiene los nombre correspondientes a cada dato de la enumeración Tipo_de_Dato.
+
+Tipo_de_Formato: enumeración de tipos de formato.
+
+Tipo_de_Dato: enumeración de los tipos de dato del proyecto.
+
+Errores_de_Validacion: Enumeración de Errores posibles de validación.
+
+
+const char* obtenerFormatoDeDato(): Retorna la cadena de formato correspondiente al tipo de dato recibido como parametro.
+
+int validarDato(Tipo_de_Dato tipo, char* buffer): Valida la cadena del parametro buffer de acuerdo al formato correspondiente tipo recibido como parametro, retorna 0 si hubo errores de validación o un valor de la enumeración Errores_de_Validacion correspondiente al error.
+
+void leerDato(Tipo_de_Dato tipo, char* puntero): Consulta, lee y valida el tipo de dato recibido como parametro, y lo almacena en el parametro puntero.
+
+NUM_TIPOS_DE_CUENTA: constante del número de tipos de cuenta.
+
+CUENTA_NUM_CAMPOS: constante del número campos iterables de una cuenta.
+
+Tipo_de_Cuenta: Enumeración de los tipos de cuenta disponibles.
+
+Cuenta: Estructura de datos de una Cuenta de un Cliente
+
+Datos_de_Cuenta: Enumeración de datos iterables de la cuenta.
+
+Movimiento_de_Cuenta: 
+
+tipoDeCuenta: Array que contiene los nombres de los tipos de cuenta correspondientes a la enumeración Tipo_de_Cuenta
+
+bool buscarCuentaPorTipo(Tipo_de_Cuenta tipo, char* cedulaDelCliente, Cuenta* cuenta): busca una cuenta del tipo "tipo" y con el número de cédula cedulaDelCliente en el archivo cuentas.dat y la guarda en el puntero cuenta que recibe como parametro.
+
+bool buscarCuenta(Datos_de_Cuenta tipo, char* dato, Cuenta* cuenta): Busca una cuenta en el archivo cuentas.dat que coincida con el dato "dato" de tipo "tipo" que recibe como parametro y la guarda en el puntero cuenta que recibe como parametro, retorna true si encuentra la cuenta, false si no.
+
+Cuenta** buscarCuentasCliente(Cliente* cliente): retorna una Array de punteros de Cuenta de el cliente que recibe como parametro.
+
+bool registrarCuentaDeCliente(Tipo_de_Cuenta tipo, Cliente* cliente): registra la una cuenta de tipo "tipo" del cliente que recibe como parametro al archivo cuentas.dat, retorna true si se registro la cuenta, false de otro modo.
+
+bool inicializarCuenta(Tipo_de_Cuenta tipo, Cuenta* cuenta, Cliente* cliente): inicializa los campos de una Cuenta con los valores del tipo, y cedula del cliente que recibe comando parametro, y los valores por defecto, retorna true si tuvo exito, false en el caso contrario.
+
+int numCuentasRegistradas(void): retorna la cantidad de cuentas registradas.
+
+const char* obtenerDatoDeCuenta(Datos_de_Cuenta dato, Cuenta* cuenta): retorna un punteroe al dato de la cuenta que recibe como parametro correspondiente al tipo de Datos_de_Cuenta que recibe como parametro.
+
+bool eliminarCuenta(char* numeroDeCuenta): elimina de cuentas.dat la cuenta con el número de cuenta correspondiente a numeroDeCuenta, retorna true si se eliminó la cuenta, false caso contrario.
+
+bool actualizarDatosDeCuenta(char* numeroDeCuenta, Cuenta* cuenta): actualiza los datos de la cuenta con el número de cuenta que recibe, con los datos del puntero de "cuenta", retorna true si se actualizaron los datos, false caso contrario.
+
+bool registrarMovimientoDeCuenta(Movimiento_de_Cuenta* movimiento): registra en el archivo movimientos.dat el movimiento de cuenta que recibe como parametro, retorna true si se registró el movimiento de cuenta, false caso contrario.
+
+
+
+
+
+
+
+
+
+
+
+
+
+#define CLAVE_SISTEMA "admin1234"
+#define PORCENTAJE_DE_COMISION 0.1
+
+
+typedef void (*funcionCliente)(Cliente* cliente);
+
+typedef void (*funcionCuenta)(Cuenta* cuenta);
+
+typedef void (*funcionVoid)(void);
+
+// Menu de ingreso al sistema, el cual solicita el usuario y la clave del cliente
+void bancoIngresarCliente(void);
+
+// Menu de registro, le pide al cliente sus datos para el registro en el sistema
+void bancoRegistrarCliente(void);
+
+void bancoIngresarSistema(void);
+
+void bancoMenuSistema(void);
+
+// Menu correspondiente a un ingreso exitoso, en el que se listan las operaciones que puede realizar el cliente
+// recibe como parametro un puntero al cliente ingresado.
+void bancoMenuCliente(Cliente* cliente);
+
+void datosCliente(Cliente* cliente);
+
+
+void menu(
+  char* titulo,
+  int numOpciones,
+  const char* opciones[],
+  funcionVoid funciones[]
+);
+
+void menuCliente(
+  char* titulo,
+  int numOpciones,
+  const char* opciones[],
+  funcionCliente funciones[],
+  Cliente* cliente
+);
+
+void menuCuenta(
+  char* titulo,
+  int numOpciones,
+  const char* opciones[],
+  funcionCuenta funciones[],
+  Cuenta* cuenta
+);
+
+
+void consultarDatos(Cliente* cliente);
+
+void actualizarDatosDireccion(Cliente* cliente);
+
+void modificarDatos(Cliente* cliente);
+
+bool eliminarClienteMenu(Cliente* cliente);
+
+void abrirCuenta (Cliente* cliente);
+
+void verCuentas (Cliente* cliente);
+
+void datosDeCuenta(Cuenta* cuenta);
+
+void estadoDeCuenta(Cuenta* cuenta);
+
+void verPagoMovil (Cliente* cliente);
+
+bool menuDeSeleccionDeCuenta (const char* titulo, const char* mensaje, Cliente* cliente, Cuenta* cuenta);
+
+void crearPagoMovil (Cliente* cliente);
+
+void verDatosPagoMovil (Cliente* cliente);
+
+void modificarPagoMovil (Cliente* cliente);
+
+void realizarTransferencia(Cliente* cliente);
+
+void realizarPagoMovil(Cliente* cliente);
+
+void realizarRetiro(void);
+
+void realizarDeposito(void);	

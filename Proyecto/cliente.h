@@ -3,7 +3,6 @@
 
 #include <stdbool.h>
 #include <time.h>
-#include "datos.h"
 
 #define CLIENTE_NUM_CAMPOS 13
 

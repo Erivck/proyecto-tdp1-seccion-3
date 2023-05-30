@@ -24,7 +24,7 @@ bool registrarCuentaDeCliente (Tipo_de_Cuenta tipo, Cliente* cliente) {
 
   if (!inicializarCuenta(tipo, &cuentaNueva, cliente)) return false;
 
-  FILE* cuentas = fopen("data/cuentas.dat", "ab");
+  FILE* cuentas = fopen("cuentas.dat", "ab");
 
   if (cuentas == NULL) return false;
 
@@ -40,7 +40,7 @@ bool buscarCuentaPorTipo(Tipo_de_Cuenta tipo, char* cedulaDelCliente, Cuenta* cu
   bool encontrado = false;
   Cuenta* cuentaptr = cuenta ? cuenta : malloc(sizeof(Cuenta));
 
-  FILE* cuentas = fopen("data/cuentas.dat", "rb");
+  FILE* cuentas = fopen("cuentas.dat", "rb");
 
   if (cuentas == NULL) return false;
 
@@ -66,7 +66,7 @@ bool buscarCuenta(Datos_de_Cuenta tipo, char* dato, Cuenta* cuenta) {
   bool encontrado = false;
   Cuenta* cuentaptr = cuenta ? cuenta : malloc(sizeof(Cuenta));
 
-  FILE* cuentas = fopen("data/cuentas.dat", "rb");
+  FILE* cuentas = fopen("cuentas.dat", "rb");
 
   if (cuentas == NULL) return false;
 
@@ -93,7 +93,7 @@ Cuenta** buscarCuentasCliente (Cliente* cliente) {
 
   Cuenta** cuentasCliente = calloc(NUM_TIPOS_DE_CUENTA, sizeof(Cuenta*));
 
-  FILE* cuentas = fopen("data/cuentas.dat", "rb");
+  FILE* cuentas = fopen("cuentas.dat", "rb");
   printf("hola\n");
 
   if (cuentas == NULL) return NULL;
@@ -115,7 +115,7 @@ Cuenta** buscarCuentasCliente (Cliente* cliente) {
 
 
 int numCuentasRegistradas () {
-  FILE* cuentas = fopen("data/cuentas.dat", "rb");
+  FILE* cuentas = fopen("cuentas.dat", "rb");
   Cuenta temp;
 
   if (cuentas == NULL) return 0;
@@ -131,7 +131,7 @@ int numCuentasRegistradas () {
 
 
 bool inicializarCuenta(Tipo_de_Cuenta tipo, Cuenta* cuenta, Cliente* cliente) {
-  char numeroDeCuenta[11];
+  char numeroDeCuenta[12];
   int numero = numCuentasRegistradas();
 
   sprintf(numeroDeCuenta, "%010d", numero+1);
@@ -165,8 +165,8 @@ const char* obtenerDatoDeCuenta(Datos_de_Cuenta dato, Cuenta* cuenta) {
 bool actualizarDatosDeCuenta(char* numeroDeCuenta, Cuenta* cuenta) {
   Cuenta temp;
 
-  FILE* cuentas = fopen("data/cuentas.dat", "rb");
-  FILE* cuentasNuevo = fopen("data/cuentas_temp.dat", "ab");
+  FILE* cuentas = fopen("cuentas.dat", "rb");
+  FILE* cuentasNuevo = fopen("cuentas_temp.dat", "ab");
 
   if (cuentas == NULL || cuentasNuevo == NULL) return false;
 
@@ -181,8 +181,8 @@ bool actualizarDatosDeCuenta(char* numeroDeCuenta, Cuenta* cuenta) {
   fclose(cuentas);
   fclose(cuentasNuevo);
 
-  remove("data/cuentas.dat");
-  rename("data/cuentas_temp.dat", "data/cuentas.dat");
+  remove("cuentas.dat");
+  rename("cuentas_temp.dat", "cuentas.dat");
 
   return true;
 }
@@ -190,8 +190,8 @@ bool actualizarDatosDeCuenta(char* numeroDeCuenta, Cuenta* cuenta) {
 bool eliminarCuenta(char* numeroDeCuenta) {
   Cuenta temp;
 
-  FILE* cuentas = fopen("data/cuentas.dat", "rb");
-  FILE* cuentasNuevo = fopen("data/cuentas_temp.dat", "ab");
+  FILE* cuentas = fopen("cuentas.dat", "rb");
+  FILE* cuentasNuevo = fopen("cuentas_temp.dat", "ab");
 
   if (cuentas == NULL || cuentasNuevo == NULL) return false;
 
@@ -203,8 +203,8 @@ bool eliminarCuenta(char* numeroDeCuenta) {
   fclose(cuentas);
   fclose(cuentasNuevo);
 
-  remove("data/clientes.dat");
-  rename("data/clientes_temp.dat", "data/clientes.dat");
+  remove("clientes.dat");
+  rename("clientes_temp.dat", "clientes.dat");
 
   return true;
 }
@@ -213,7 +213,7 @@ bool eliminarCuenta(char* numeroDeCuenta) {
 bool registrarMovimientoDeCuenta(Movimiento_de_Cuenta* movimiento) {
   bool registrado = false;
 
-  FILE* movimientos = fopen("data/movimientos.dat", "ab");
+  FILE* movimientos = fopen("movimientos.dat", "ab");
 
   if (movimientos == NULL) return false;
 

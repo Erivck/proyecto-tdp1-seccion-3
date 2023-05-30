@@ -5,6 +5,7 @@
 #include "cuenta.h"
 
 #define CLAVE_SISTEMA "admin1234"
+#define PORCENTAJE_DE_COMISION 0.1
 
 
 typedef void (*funcionCliente)(Cliente* cliente);

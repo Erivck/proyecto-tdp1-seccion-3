@@ -92,3 +92,69 @@
 	<string.h>
 	<stdlib.h>
 
+1685400184 source:/home/edilsonr/TDP1/proyecto-tdp1/Proyecto/main.c
+	<stdio.h>
+	<stdlib.h>
+	"utils.h"
+	"banco.h"
+
+1685400184 /home/edilsonr/TDP1/proyecto-tdp1/Proyecto/utils.h
+	<windows.h>
+
+1685400184 /home/edilsonr/TDP1/proyecto-tdp1/Proyecto/banco.h
+	"cliente.h"
+	"cuenta.h"
+
+1685402474 /home/edilsonr/TDP1/proyecto-tdp1/Proyecto/cliente.h
+	<stdbool.h>
+	<time.h>
+
+1685402760 /home/edilsonr/TDP1/proyecto-tdp1/Proyecto/datos.h
+	<stdbool.h>
+
+1685402738 /home/edilsonr/TDP1/proyecto-tdp1/Proyecto/cuenta.h
+	<stdbool.h>
+	<time.h>
+	"cliente.h"
+
+1685400184 source:/home/edilsonr/TDP1/proyecto-tdp1/Proyecto/src/cliente.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<stdbool.h>
+	"../cliente.h"
+	"../datos.h"
+
+1685400184 source:/home/edilsonr/TDP1/proyecto-tdp1/Proyecto/src/datos.c
+	<stdio.h>
+	<stdbool.h>
+	<string.h>
+	<stdlib.h>
+	<time.h>
+	"../datos.h"
+	"../utils.h"
+
+1685400184 source:/home/edilsonr/TDP1/proyecto-tdp1/Proyecto/src/utils.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"../utils.h"
+
+1685402568 source:/home/edilsonr/TDP1/proyecto-tdp1/Proyecto/src/banco.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<time.h>
+	"../datos.h"
+	"../banco.h"
+	"../cliente.h"
+	"../utils.h"
+	"../cuenta.h"
+
+1685401489 source:/home/edilsonr/TDP1/proyecto-tdp1/Proyecto/src/cuenta.c
+	"../cuenta.h"
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+

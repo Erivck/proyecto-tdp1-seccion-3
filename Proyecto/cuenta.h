@@ -43,7 +43,7 @@ typedef struct {
   time_t fecha;
 } Movimiento_de_Cuenta;
 
-const char* tipoDeCuenta[3];
+extern const char* tipoDeCuenta[3];
 
 bool buscarCuentaPorTipo(Tipo_de_Cuenta tipo, char* cedulaDelCliente, Cuenta* cuenta);
 

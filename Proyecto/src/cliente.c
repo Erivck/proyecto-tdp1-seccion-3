@@ -9,7 +9,7 @@
 bool registrarCliente(Cliente* cliente) {
   bool registrado = false;
 
-  FILE* clientes = fopen("data/clientes.dat", "ab");
+  FILE* clientes = fopen("clientes.dat", "ab");
 
   if (clientes == NULL) return false;
 
@@ -25,7 +25,7 @@ bool buscarCliente(Datos_de_Cliente tipo, char* dato, Cliente* cliente) {
   bool encontrado = false;
   Cliente* clienteptr = cliente ? cliente : malloc(sizeof(Cliente));
 
-  FILE* clientes = fopen("data/clientes.dat", "rb");
+  FILE* clientes = fopen("clientes.dat", "rb");
 
   if (clientes == NULL) return false;
 
@@ -46,8 +46,8 @@ bool buscarCliente(Datos_de_Cliente tipo, char* dato, Cliente* cliente) {
 bool actualizarDatosDeCliente(char* usuario, Cliente* cliente) {
   Cliente temp;
 
-  FILE* clientes = fopen("data/clientes.dat", "rb");
-  FILE* clientesNuevo = fopen("data/clientes_temp.dat", "ab");
+  FILE* clientes = fopen("clientes.dat", "rb");
+  FILE* clientesNuevo = fopen("clientes_temp.dat", "ab");
 
   if (clientes == NULL || clientesNuevo == NULL) return false;
 
@@ -62,8 +62,8 @@ bool actualizarDatosDeCliente(char* usuario, Cliente* cliente) {
   fclose(clientes);
   fclose(clientesNuevo);
 
-  remove("data/clientes.dat");
-  rename("data/clientes_temp.dat", "data/clientes.dat");
+  remove("clientes.dat");
+  rename("clientes_temp.dat", "clientes.dat");
 
   return true;
 }
@@ -71,8 +71,8 @@ bool actualizarDatosDeCliente(char* usuario, Cliente* cliente) {
 bool eliminarCliente(char* usuario) {
   Cliente temp;
 
-  FILE* clientes = fopen("data/clientes.dat", "rb");
-  FILE* clientesNuevo = fopen("data/clientes_temp.dat", "ab");
+  FILE* clientes = fopen("clientes.dat", "rb");
+  FILE* clientesNuevo = fopen("clientes_temp.dat", "ab");
 
   if (clientes == NULL || clientesNuevo == NULL) return false;
 
@@ -84,8 +84,8 @@ bool eliminarCliente(char* usuario) {
   fclose(clientes);
   fclose(clientesNuevo);
 
-  remove("data/clientes.dat");
-  rename("data/clientes_temp.dat", "data/clientes.dat");
+  remove("clientes.dat");
+  rename("clientes_temp.dat", "clientes.dat");
 
   return true;
 }

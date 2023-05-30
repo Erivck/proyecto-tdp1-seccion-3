@@ -2,10 +2,10 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
+#include "../datos.h"
 #include "../banco.h"
 #include "../cliente.h"
 #include "../utils.h"
-#include "../datos.h"
 #include "../cuenta.h"
 
 #define NUM_OPCIONES_BANCO 5
@@ -305,7 +305,7 @@ void modificarDatos(Cliente* cliente) {
         continue;
       }
 
-      leerDato(datoAModificar, obtenerDatoDeCliente(datoAModificar, cliente));
+      leerDato(datoAModificar, obtenerDatoDeCliente((Datos_de_Cliente)datoAModificar, cliente));
 
       modificado = actualizarDatosDeCliente(cliente->usuario, cliente);
 
@@ -331,7 +331,7 @@ bool eliminarClienteMenu(Cliente* cliente) {
 
   printf("\t\t---ELIMINAR CLIENTE---\n\n\v");
 
-  leerDato(Clave, clave);
+  leerDato(CLAVE, clave);
 
   if (strcmp(cliente->clave, clave) == 0) {
     eliminado = eliminarCliente(cliente->usuario);
@@ -515,7 +515,7 @@ void estadoDeCuenta(Cuenta* cuenta) {
 
       printf("\t\t\t---ESTADO DE CUENTA %s---\n\n\v", estadoCadena[opcion-1]);
 
-      FILE* movimientos = fopen("data/movimientos.dat", "rb");
+      FILE* movimientos = fopen("movimientos.dat", "rb");
       char fechaMovimiento[11];
 
       if (movimientos == NULL) {

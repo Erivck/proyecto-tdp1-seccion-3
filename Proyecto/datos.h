@@ -21,7 +21,7 @@
 
 #define NUM_TIPOS_DE_DATOS 17
 
-const char* Nombre_de_Datos[NUM_TIPOS_DE_DATOS];
+extern const char* Nombre_de_Datos[NUM_TIPOS_DE_DATOS];
 
 //Tipos de formato de texto.
 typedef enum {
