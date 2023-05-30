@@ -288,6 +288,8 @@ void modificarDatos(Cliente* cliente) {
     if (opcion > 0 && opcion < 8) {
       bool modificado = false;
       datoAModificar = opcion - 1;
+      char usuario[16];
+      strcpy(usuario, cliente->usuario);
 
       limpiarPantalla();
 
@@ -307,7 +309,7 @@ void modificarDatos(Cliente* cliente) {
 
       leerDato(datoAModificar, obtenerDatoDeCliente((Datos_de_Cliente)datoAModificar, cliente));
 
-      modificado = actualizarDatosDeCliente(cliente->usuario, cliente);
+      modificado = actualizarDatosDeCliente(usuario, cliente);
 
       if (!modificado) {
         printf("Ocurrió un error al intentar actualizar los datos del cliente.\n\n");
@@ -319,7 +321,7 @@ void modificarDatos(Cliente* cliente) {
       printf("\n%s actualizado exitosamente.\n\n", Nombre_de_Datos[datoAModificar]);
       esperarEntrada();
     }
-  } while(opcion != 7);
+  } while(opcion != numDatosAModificar+1);
 }
 
 

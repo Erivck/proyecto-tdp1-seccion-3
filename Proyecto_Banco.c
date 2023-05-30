@@ -1162,7 +1162,7 @@ void actualizarDatosDireccion(Cliente* cliente) {
 
 void modificarDatos(Cliente* cliente) {
   char clave[21];
-  int numDatosAModificar = 8;
+  int numDatosAModificar = 7;
   Tipo_de_Dato datoAModificar;
   int opcion;
 
@@ -1217,7 +1217,7 @@ void modificarDatos(Cliente* cliente) {
       printf("\n%s actualizado exitosamente.\n\n", Nombre_de_Datos[datoAModificar]);
       esperarEntrada();
     }
-  } while(opcion != numDatosAModificar);
+  } while(opcion != numDatosAModificar+1);
 }
 
 
